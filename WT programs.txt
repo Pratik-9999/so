@@ -1,0 +1,1787 @@
+
+- - - Slip 1 - - - 
+
+Q.1 Write a php script define an array from 10 to 70 elements also print
+ first element, last element, second last element and second element
+ , next element. (Use range array faction) ?
+
+ans- 
+
+ <?php
+$array = range(10, 70);
+echo "First element: " . $array[0] . "\n";
+echo "Last element: " . end($array) . "\n";
+echo "Second last element: " . $array[count($array) - 2] . "\n";
+echo "Second element: " . $array[1] . "\n";
+echo "Next element (third element): " . $array[2] . "\n";
+?>
+
+Q.2 Write a Python program to create a dataframe containing columns
+name, age and percentage. Add 10 rows to the dataframe. View the
+dataframe, print the shape, number of rows-columns, data types, feature
+names and the description of the data and basic statistical details of the
+data. ?
+
+ans-
+
+import pandas as pd
+df=pd.DataFrame(columns=['Name','Age','Percentage'])
+df.loc[0]=['Shirin',19,98]
+df.loc[1]=['Sanjana',20,97]
+df.loc[2]=['Tanvi',19,96]
+df.loc[3]=['Inaara',20,95]
+df.loc[4]=['Sharon',14,99]
+df.loc[5]=['Athulya',15,94]
+df.loc[6]=['Emily',21,93]
+df.loc[7]=['Mia',22,92]
+df.loc[8]=['Emma',23,91]
+df.loc[9]=['Jessica',24,90]
+df
+print("shape\n",df.shape)
+print("datatypes\n",df.dtypes)
+print("columns\n",df.columns)
+print("information of dataframe\t\t",df.info)
+print("description of data\n",df.describe())
+
+
+
+
+
+- - - Slip 2 - - - 
+
+
+Q.1 Write a menu driven program to perform the following stack
+ Operations.
+ i. Insert character A to F
+ ii. Remove first element
+ iii. Display remaining stack element. ?
+
+ans-
+
+ <?php
+$stack = [];
+function displayMenu() {
+    echo "\nMenu:\n1. Insert A to F\n2. Remove first element\n3. Display stack\n4. Exit\n";
+}
+function insertElements(&$stack) {
+    $stack = ['A', 'B', 'C', 'D', 'E', 'F'];
+    echo "Inserted A to F.\n";
+}
+function removeElement(&$stack) {
+    echo empty($stack) ? "Stack is empty.\n" : "Removed: " . array_shift($stack) . "\n";
+}
+function displayStack($stack) {
+    echo empty($stack) ? "Stack is empty.\n" : "Stack: " . implode(", ", $stack) . "\n";
+}
+do {
+    displayMenu();
+    $choice = readline("Enter choice (1-4): ");
+    switch ($choice) {
+        case 1: insertElements($stack); break;
+        case 2: removeElement($stack); break;
+        case 3: displayStack($stack); break;
+        case 4: echo "Exiting.\n"; break;
+        default: echo "Invalid choice!\n";
+    }
+} while ($choice != 4);
+?>
+
+
+Q.2 View the dataframe, print the shape, number of rows-columns, data
+types, feature names and the description of the data and basic statistical
+details of the data.(Use iris.csv) ?
+
+ans-
+
+import pandas as pd
+df = pd.read_csv('iris.csv')
+print("DataFrame:\n", df)
+print("\nShape of the DataFrame:", df.shape)
+print("\nNumber of rows:", df.shape[0])
+print("Number of columns:", df.shape[1])
+print("\nData Types:\n", df.dtypes)
+print("\nFeature Names:", df.columns.tolist())
+print("\nDescription:\n", df.describe())
+
+
+- - - Slip 3 - - -
+
+Q.1 Write a menu driven program to perform various file operation.
+ Accept file name from user.
+ a. Display type of file.
+ b. Delete a file
+ c. Display last access time of file ?
+
+ans- 
+
+ <?php
+function displayMenu() {
+    echo "\nMenu:\na. Display type of file\nb. Delete the file\nc. Display last access time of the file\nd. Exit\n";
+}
+
+function displayFileType($filename) {
+    echo file_exists($filename) ? "The type of the file is: " . filetype($filename) . "\n" : "File does not exist.\n";
+}
+
+function deleteFile($filename) {
+    echo file_exists($filename) ? (unlink($filename) ? "File '$filename' has been deleted.\n" : "Error: Could not delete the file.\n") : "File does not exist.\n";
+}
+
+function displayLastAccessTime($filename) {
+    echo file_exists($filename) ? "The last access time of the file is: " . date("F d Y H:i:s.", fileatime($filename)) . "\n" : "File does not exist.\n";
+}
+
+do {
+    $filename = readline("Enter the file name: ");
+    displayMenu();
+    $choice = readline("Enter your choice (a-d): ");
+
+    switch ($choice) {
+        case 'a': displayFileType($filename); break;
+        case 'b': deleteFile($filename); break;
+        case 'c': displayLastAccessTime($filename); break;
+        case 'd': echo "Exiting the program.\n"; break;
+        default: echo "Invalid choice!\n";
+    }
+} while ($choice != 'd');
+?>
+
+
+Q.2 View the dataframe, print the shape, number of rows-columns, data
+types, feature names and the description of the data and basic statistical
+details of the data.(Use Heights and Weights Dataset.csv) ?
+
+ans- 
+
+import pandas as pd
+
+df = pd.read_csv('Heights and Weights Dataset.csv')
+
+print("DataFrame:\n", df)
+
+print("\nShape of the DataFrame:", df.shape)
+
+print("\nNumber of rows:", df.shape[0])
+print("Number of columns:", df.shape[1])
+
+print("\nData Types:\n", df.dtypes)
+
+print("\nFeature Names:", df.columns.tolist())
+
+print("\nDescription:\n", df.describe())
+
+
+
+- - - Slip 5 - - -
+
+Q.1 Write a program to read one file and display the content of the file
+ with size.?
+
+ans-
+
+ <?php
+$filename = "example.txt";
+
+if (file_exists($filename)) {
+    $content = file_get_contents($filename);
+    $size = filesize($filename);
+    echo "File Content:\n$content\n";
+    echo "File Size: $size bytes\n";
+} else {
+    echo "File does not exist.\n";
+}
+?>
+
+Q.2 Write a Python program to find the maximum and minimum value
+of a given flattened array. Expected Output:
+Original flattened array:
+[[0 1]
+[2 3]]
+ Maximum value of the above flattened array:
+ 3
+Minimum value of the above flattened array:
+0.  ?
+
+ans -
+
+import numpy as np
+a = np.arange(4).reshape((2, 2))
+print("Original flattened array:")
+print(a)
+print("Maximum value of the above flattened array:")
+print(np.amax(a))
+print("Minimum value of the above flattened array:")
+print(np.amin(a))
+
+
+- - - Slip 6 - - -
+
+Q.1 Create a HTML document to display the following screen.
+
+ans-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Indian States with Capitals</title>
+</head>
+<body>
+    <h1>List of Indian States with their Capitals</h1>
+    <ol>
+        <li>Delhi - New Delhi</li>
+        <li>Haryana - Chandigarh</li>
+        <li>Gujarat - Gandhinagar</li>
+        <li>Rajasthan - Jaipur</li>
+        <li>Maharashtra - Mumbai</li>
+        <li>Uttar Pradesh - Lucknow</li>
+    </ol>
+</body>
+</html>
+
+Q.2 Write a program in python to perform following task
+ Import Dataset and do the followings: a) Describing the dataset b)
+Shape of the dataset c) Display first 3 rows from dataset and find
+missing value (use Data.csv) ?
+
+ans-
+
+import pandas as pd
+
+df = pd.read_csv('Data.csv')
+
+print(df.describe())
+
+print(df.shape)
+
+print(df.head(3))
+
+print(df.isnull().sum())
+
+
+- - - Slip 7 - - -
+
+Q.1 Write a HTML code, which generate the following output
+List of Books
+Item No Item Name Price
+Rs Paise
+1 Programming in Python 550 75
+2 Programming in Java 425 80 ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Books</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>List of Books</h2>
+    <table>
+        <tr>
+            <th>Item No</th>
+            <th>Item Name</th>
+            <th>Price (Rs)</th>
+            <th>Price (Paise)</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Programming in Python</td>
+            <td>550</td>
+            <td>75</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Programming in Java</td>
+            <td>425</td>
+            <td>80</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Q.2 Write a program in python to perform following task 1. Import
+Dataset and do the followings: a) Describing the dataset b) Shape of the
+dataset c) Display first 3 rows from dataset 2. Handling Missing Value:
+a) Replace missing by 0 (use lst =[{'a': 1, 'b': 2, 'c': 3, 'd': 4}, … {'a': 10,
+'b': 20, 'c': 30, 'd': 40}, … {'a': 100, 'b': 200, 'c': 300, 'd': 400 }] ?
+
+ans- 
+
+import pandas as pd
+lst = [{'a': 1, 'b': 2, 'c': 3, 'd': 4},
+ {'a': 10, 'b': 20, 'c': 30, 'd': 40},
+ {'a': 100, 'b': 200, 'c': 300, 'd': 400}]
+df = pd.DataFrame(lst)
+print("Describing the dataset:")
+print(df.describe())
+print("\nShape of the dataset:")
+print(df.shape)
+print("\nFirst 3 rows of the dataset:")
+print(df.head(3))
+df.fillna(0, inplace=True)
+print("\nDataset after replacing missing values with 0:")
+print(df)
+
+- - - Slip 8 - - -
+
+Q.1 Create HTML5 page with following specifications
+ i) Title should be about your City.
+ ii) Color the background by Pink color.
+ iii) Place your city name at the top of page in large text and in blue
+ Color.
+ iv) Add names of the landmarks in your city, each in different color,
+ style and font.
+ v) Add scrolling text about your City.
+ vi) Add any image at the bottom. (Use inline CSS to format the web
+ page) ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My City</title>
+    <style>
+        body { background: pink; font-family: Arial; }
+        h1 { color: blue; text-align: center; font-size: 3em; }
+        .landmark { font-size: 1.5em; margin: 10px 0; }
+        .landmark1 { color: red; font-style: italic; }
+        .landmark2 { color: green; font-weight: bold; }
+        .landmark3 { color: orange; text-decoration: underline; }
+        .landmark4 { color: purple; font-family: 'Courier New'; }
+        .scrolling-text { width: 100%; overflow: hidden; white-space: nowrap; animation: scroll 10s linear infinite; background: lightyellow; padding: 10px; }
+        @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+        img { display: block; margin: 20px auto; max-width: 80%; }
+    </style>
+</head>
+<body>
+    <h1>My City</h1>
+    <div class="landmark landmark1">Eiffel Tower</div>
+    <div class="landmark landmark2">Louvre Museum</div>
+    <div class="landmark landmark3">Notre-Dame</div>
+    <div class="landmark landmark4">Champs-Élysées</div>
+    <div class="scrolling-text">Welcome to my city! Experience the beauty and culture!</div>
+    <img src="https://via.placeholder.com/600x400" alt="City Image">
+</body>
+</html>
+
+Q.2 Write a program in python to drow (bar graph, pie chart and scatter
+plot). Apply appropriate color, labels and styling options
+ (Use X={10,20,30,40,50,60},Y={50,40,80,90,49,63}) ?
+
+ans -
+
+#scatter
+import matplotlib.pyplot as plt
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.scatter(x_axis_value, y_axis_value)
+plt.show()
+#bar graph
+import matplotlib.pyplot as plt
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.bar(x_axis_value, y_axis_value)
+plt.show()
+#pie chart
+import matplotlib.pyplot as plt
+import numpy as np
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.pie(x_axis_value, y_axis_value)
+plt.show()
+
+
+- - - Slip 9 - - -
+
+Q.1 Write a script to accept two integers(Use html form having 2
+ textboxes). Write a PHP script to,
+ a. Find mod of the two numbers.
+ b. Find the power of first number raised to the second.
+ c. Find the factorial of second number ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Integer Operations</title>
+</head>
+<body>
+    <h2>Enter Two Integers</h2>
+    <form method="post">
+        <input type="number" name="num1" placeholder="First Integer" required>
+        <input type="number" name="num2" placeholder="Second Integer" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    if ($_POST) {
+        $num1 = $_POST['num1'];
+        $num2 = $_POST['num2'];
+        $mod = $num1 % $num2;
+        $power = pow($num1, $num2);
+        $factorial = array_product(range(1, $num2));
+
+        echo "<h3>Results:</h3>";
+        echo "Modulus: $mod<br>";
+        echo "Power: $power<br>";
+        echo "Factorial: $factorial<br>";
+    }
+    ?>
+</body>
+</html>
+
+Q.2 Generate a random array of 50 integers and display them using a
+line chart, scatter plot, histogram and box plot. Apply appropriate color,
+labels and styling options. ?
+
+ans-
+
+#scatter
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+y=np.random.randn(50)
+plt.scatter(x,y,c='r',linestyle='--')
+plt.show()
+#histogram
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+plt.hist(x,facecolor='y',bins=10)
+plt.show()
+#box plot
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+plt.boxplot(x,vert=False)
+plt.show()
+
+
+- - - Slip 10 - - -
+
+Q.1 Write a PHP script for the following: Design a form to accept a
+ string.
+a. Write a function to find the length of given string.(Use built-in
+functions)
+b. Write a function to count the total number of vowels i.e. (a, e, i,
+ o,u) from the string.
+ c. Convert the given string to lowercase. ?
+
+ans-
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Operations</title>
+</head>
+<body>
+    <h2>Enter a String</h2>
+    <form method="post">
+        <input type="text" name="inputString" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    if ($_POST) {
+        $str = $_POST['inputString'];
+        $length = strlen($str);
+        $vowelCount = preg_match_all('/[aeiou]/i', $str);
+        $lowercaseString = strtolower($str);
+
+        echo "<h3>Results:</h3>";
+        echo "Length: $length<br>";
+        echo "Vowel Count: $vowelCount<br>";
+        echo "Lowercase: $lowercaseString<br>";
+    }
+    ?>
+</body>
+</html>
+
+Q.2 Write a Python program to create a Pie plot to get the frequency of
+the three species of the Iris data.  ?
+
+ans-
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+iris = load_iris()
+data = pd.DataFrame(data=iris.data,
+columns=iris.feature_names)
+data['species'] = pd.Categorical.from_codes(iris.target,
+iris.target_names)
+species_counts = data['species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_counts, labels=species_counts.index,
+autopct='%1.1f%%', startangle=90)
+plt.title('Frequency of Iris Species')
+plt.axis('equal')
+plt.show()
+
+
+
+- - - Slip 11 - - - 
+
+Q.1 Write a php script to accept file name from user and print total
+ number of characters, words, lines. ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Analysis</title>
+</head>
+<body>
+    <h2>Enter File Name</h2>
+    <form method="post">
+        <input type="text" name="filename" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    if ($_POST) {
+        $filename = $_POST['filename'];
+        
+        if (file_exists($filename)) {
+            $content = file_get_contents($filename);
+            $lines = count(file($filename));
+            $words = str_word_count($content);
+            $characters = strlen($content);
+
+            echo "<h3>Results:</h3>";
+            echo "Total Characters: $characters<br>";
+            echo "Total Words: $words<br>";
+            echo "Total Lines: $lines<br>";
+        } else {
+            echo "File does not exist.";
+        }
+    }
+    ?>
+</body>
+</html>
+
+Q.2 Write python program to plot Sepal length for all entries, To display
+the species count for each species, To create a line plot of Sepal length
+vs Petal Length (iris.csv) ?
+
+ans-
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('iris.csv')
+
+df['SepalLengthCm'].plot(kind='line')
+plt.title('Sepal Length for All Entries')
+plt.xlabel('Index')
+plt.ylabel('Sepal Length (cm)')
+plt.show()
+
+species_count = df['Species'].value_counts()
+print(species_count)
+
+plt.plot(df['SepalLengthCm'], df['PetalLengthCm'])
+plt.title('Sepal Length vs Petal Length')
+plt.xlabel('Sepal Length (cm)')
+plt.ylabel('Petal Length (cm)')
+plt.show()
+
+- - - Slip 12 - - - 
+
+Q.1 Declare a Multidimensional Array (3x3) matrix and print sum of
+ diagonal element. ?
+
+ans- 
+
+ <?php
+$matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+$diagonalSum = 0;
+for ($i = 0; $i < 3; $i++) {
+    $diagonalSum += $matrix[$i][$i];
+}
+echo "Sum of diagonal elements: $diagonalSum";
+?>
+
+Q.2 Write a Python program to create a dataframe containing columns
+name, age and percentage. Add 10 rows to the dataframe. View the
+dataframe, print the shape, number of rows-columns, data types, feature
+names and the description of the data and basic statistical details of the
+data. ?
+
+ans -
+
+import pandas as pd
+df=pd.DataFrame(columns=['Name','Age','Percentage'])
+df.loc[0]=['Shirin',19,98]
+df.loc[1]=['Sanjana',20,97]
+df.loc[2]=['Tanvi',19,96]
+df.loc[3]=['Inaara',20,95]
+df.loc[4]=['Sharon',14,99]
+df.loc[5]=['Athulya',15,94]
+df.loc[6]=['Emily',21,93]
+df.loc[7]=['Mia',22,92]
+df.loc[8]=['Emma',23,91]
+df.loc[9]=['Jessica',24,90]
+df
+print("shape\n",df.shape)
+print("datatypes\n",df.dtypes)
+print("columns\n",df.columns)
+print("information of dataframe\t\t",df.info)
+print("description of data\n",df.describe())
+
+
+
+- - - Slip 14 - - -
+
+Q.1 Accept a string from the user and check whether it is a palindrome
+ or not (Implement stack operations using array built-in functions). ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <h2>Enter a String</h2>
+    <form method="post">
+        <input type="text" name="inputString" required>
+        <input type="submit" value="Check">
+    </form>
+
+    <?php
+    if ($_POST) {
+        $str = $_POST['inputString'];
+        $stack = str_split($str);
+        $reversed = '';
+
+        while ($char = array_pop($stack)) {
+            $reversed .= $char;
+        }
+
+        echo $str === $reversed ? "<h3>'$str' is a palindrome.</h3>" : "<h3>'$str' is not a palindrome.</h3>";
+    }
+    ?>
+</body>
+</html>
+
+
+Q.2 Write a program in python to drow (bar graph, pie chart and scatter
+plot). Apply appropriate color, labels and styling options
+ (Use Data.csv) ?
+
+ans-
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('Data.csv')
+
+df['Column1'].value_counts().plot(kind='bar', color='skyblue')
+plt.title('Bar Graph')
+plt.xlabel('Category')
+plt.ylabel('Count')
+plt.show()
+
+df['Column2'].value_counts().plot(kind='pie', autopct='%1.1f%%', colors=['#ff9999', '#66b3ff', '#99ff99'])
+plt.title('Pie Chart')
+plt.show()
+
+plt.scatter(df['Column3'], df['Column4'], color='purple')
+plt.title('Scatter Plot')
+plt.xlabel('Column 3')
+plt.ylabel('Column 4')
+plt.show()
+
+
+- - - Slip 15 - - -
+
+Q.1 Define an array. Find the element from the array that matches the
+ given value using appropriate search function. ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Array Element</title>
+</head>
+<body>
+    <h2>Search for an Element in Array</h2>
+    <form method="post">
+        <input type="text" name="searchValue" required>
+        <input type="submit" value="Search">
+    </form>
+
+    <?php
+    if ($_POST) {
+        $array = [10, 20, 30, 40, 50];
+        $searchValue = $_POST['searchValue'];
+        $key = array_search($searchValue, $array);
+
+        if ($key !== false) {
+            echo "<h3>Element $searchValue found at index $key.</h3>";
+        } else {
+            echo "<h3>Element $searchValue not found in the array.</h3>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+Q.2 Write a program in python to perform following task 1. Import
+Dataset and do the followings: a) Describing the dataset b) Shape of the
+dataset c) Display first 3 rows from dataset 2. Handling Missing Value:
+a) Replace missing by 0 (use lst =[{'a': 1, 'b': 2, 'c': 3, 'd': 4}, … {'a': 10,
+'b': 20, 'c': 30, 'd': 40}, … {'a': 100, 'b': 200, 'c': 300, 'd': 400 }] ?
+
+ans-
+
+import pandas as pd
+lst = [{'a': 1, 'b': 2, 'c': 3, 'd': 4},
+ {'a': 10, 'b': 20, 'c': 30, 'd': 40},
+ {'a': 100, 'b': 200, 'c': 300, 'd': 400}]
+df = pd.DataFrame(lst)
+print("Describing the dataset:")
+print(df.describe())
+print("\nShape of the dataset:")
+print(df.shape)
+print("\nFirst 3 rows of the dataset:")
+print(df.head(3))
+df.fillna(0, inplace=True)
+print("\nDataset after replacing missing values with 0:")
+print(df)
+
+
+- - - Slip 17 - - -
+
+Q.1 Write a php program to read flat file ‘student.dat’ that has student
+ details as roll no, name, class. Display the data from the file in
+ tabular format. ?
+
+ans-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+</head>
+<body>
+    <h2>Student Details</h2>
+    <table border="1">
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Class</th>
+        </tr>
+
+        <?php
+        foreach (file('student.dat') as $line) {
+            list($rollNo, $name, $class) = explode(',', trim($line));
+            echo "<tr><td>$rollNo</td><td>$name</td><td>$class</td></tr>";
+        }
+        ?>
+    </table>
+</body>
+</html>
+
+Q.2 Write a program in python to perform following task
+ Import Dataset and do the followings: a) Describing the dataset b)
+Shape of the dataset c) Display first 3 rows from dataset and find
+missing value (use Data.csv) ?
+
+ans-
+
+import pandas as pd
+
+df = pd.read_csv('Data.csv')
+
+print(df.describe())
+
+print(df.shape)
+
+print(df.head(3))
+
+print(df.isnull().sum())
+
+
+- - - Slip 18 - - -
+
+Q.1Consider the following entities and their relationship.
+Doctor (dno, dname, address, city)
+Hospital (hno, hname, hcity)
+Doctor-Hospital related with many to one relationship.
+Create a RDB in 3NF for above and solve the following.
+Write a PHP script to print the Doctor visiting to the Hospital in
+tabular format.
+Accept hospital name from user ?
+
+ans-
+
+ CREATE TABLE Hospital (
+    hno INT PRIMARY KEY,
+    hname VARCHAR(100),
+    hcity VARCHAR(100)
+);
+
+CREATE TABLE Doctor (
+    dno INT PRIMARY KEY,
+    dname VARCHAR(100),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    hno INT,
+    FOREIGN KEY (hno) REFERENCES Hospital(hno)
+);
+
+INSERT INTO Hospital (hno, hname, hcity) VALUES
+(1, 'City Hospital', 'New York'),
+(2, 'General Hospital', 'Los Angeles');
+
+INSERT INTO Doctor (dno, dname, address, city, hno) VALUES
+(1, 'Dr. Smith', '123 Elm St', 'New York', 1),
+(2, 'Dr. Jones', '456 Oak St', 'Los Angeles', 2),
+(3, 'Dr. Brown', '789 Pine St', 'New York', 1);
+Html program:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctors by Hospital</title>
+</head>
+<body>
+    <h2>Doctors Visiting a Hospital</h2>
+    <form method="post">
+        <input type="text" name="hospital" placeholder="Hospital Name" required>
+        <input type="submit" value="Search">
+    </form>
+    <table border="1">
+        <tr>
+            <th>Doctor Name</th>
+            <th>Address</th>
+        </tr>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $h = $_POST['hospital'];
+            $conn = new mysqli('localhost', 'user', 'pass', 'db');
+
+            $sql = "SELECT dname, address FROM Doctor d JOIN Hospital h ON d.hno = h.hno WHERE h.hname = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('s', $h);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            while ($r = $result->fetch_assoc()) {
+                echo "<tr><td>{$r['dname']}</td><td>{$r['address']}</td></tr>";
+            }
+
+            if ($result->num_rows === 0) {
+                echo "<tr><td colspan='2'>No doctors found.</td></tr>";
+            }
+
+            $stmt->close();
+            $conn->close();
+        }
+        ?>
+    </table>
+</body>
+</html>
+
+
+Q.2 Write a program in python to perform following task
+ Import Dataset and do the followings: a) Describing the dataset b)
+Shape of the dataset c) Display first 3 rows from dataset and find
+missing value (use Data.csv) ?
+
+ans-
+
+import pandas as pd
+
+df = pd.read_csv('Data.csv')
+
+print(df.describe())
+print(df.shape)
+print(df.head(3))
+print(df.isnull().sum())
+
+
+- - - Slip 20 - - -
+
+Q.1 Write the HTML code which generates the following output. 
+
+ans-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Country Population Data</title>
+</head>
+<body>
+    <h2>Country Population (In Crores)</h2>
+    <table border="1">
+        <tr>
+            <th>Country</th>
+            <th>Year</th>
+            <th>Population</th>
+        </tr>
+        <tr>
+            <td>INDIA</td>
+            <td>1998</td>
+            <td>85</td>
+        </tr>
+        <tr>
+            <td>INDIA</td>
+            <td>1999</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>INDIA</td>
+            <td>2000</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>USA</td>
+            <td>1998</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>USA</td>
+            <td>1999</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>USA</td>
+            <td>2000</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>UK</td>
+            <td>1998</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>UK</td>
+            <td>1999</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>UK</td>
+            <td>2000</td>
+            <td>35</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+Q.2 Write a Python program to create a dataframe containing columns
+name, age and percentage. Add 10 rows to the dataframe. View the
+dataframe, print the shape, number of rows-columns, data types, feature
+names and the description of the data and basic statistical details of the
+data. ?
+
+ans-
+
+import pandas as pd
+df=pd.DataFrame(columns=['Name','Age','Percentage'])
+df.loc[0]=['Shirin',19,98]
+df.loc[1]=['Sanjana',20,97]
+df.loc[2]=['Tanvi',19,96]
+df.loc[3]=['Inaara',20,95]
+df.loc[4]=['Sharon',14,99]
+df.loc[5]=['Athulya',15,94]
+df.loc[6]=['Emily',21,93]
+df.loc[7]=['Mia',22,92]
+df.loc[8]=['Emma',23,91]
+df.loc[9]=['Jessica',24,90]
+df
+print("shape\n",df.shape)
+print("datatypes\n",df.dtypes)
+print("columns\n",df.columns)
+print("information of dataframe\t\t",df.info)
+print("description of data\n",df.describe())
+
+
+- - - Slip 21 - - -
+
+Q.1 Write the HTML code which generates the following output ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OS Survey</title>
+</head>
+<body>
+    <h2>OS Survey</h2>
+    <form>
+        <label>Name:</label><br>
+        <input type="text" name="name"><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password"><br>
+
+        <label>OS Used:</label><br>
+        <input type="checkbox" name="os_used" value="LINUX" checked>LINUX<br>
+        <input type="checkbox" name="os_used" value="Windows XP">Windows XP<br>
+        <input type="checkbox" name="os_used" value="Macintosh 8.0">Macintosh 8.0<br>
+
+        <label>Favorite OS:</label><br>
+        <input type="radio" name="os_best" value="LINUX">LINUX<br>
+        <input type="radio" name="os_best" value="Windows XP" checked>Windows XP<br>
+        <input type="radio" name="os_best" value="Macintosh 8.0">Macintosh 8.0<br>
+
+        <p>Form Completed.</p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+Q.2 Write python program to plot Sepal length for all entries, To display
+the species count for each species, To create a line plot of Sepal length
+vs Petal Length (iris.csv) ?
+
+ans-
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('iris.csv')
+
+df['SepalLengthCm'].plot(kind='line')
+plt.title('Sepal Length for All Entries')
+plt.xlabel('Index')
+plt.ylabel('Sepal Length (cm)')
+plt.show()
+
+species_count = df['Species'].value_counts()
+print(species_count)
+
+plt.plot(df['SepalLengthCm'], df['PetalLengthCm'])
+plt.title('Sepal Length vs Petal Length')
+plt.xlabel('Sepal Length (cm)')
+plt.ylabel('Petal Length (cm)')
+plt.show()
+
+
+
+- - - Slip 22 - - -
+
+Q.1 Write the HTML code which generates the following output. 
+
+ans-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Order Form</title>
+</head>
+<body>
+    <h2>Choose your favourite ice cream flavour</h2>
+    <form>
+        <label>
+            <input type="checkbox" name="flavour" value="vanilla"> Vanilla
+        </label><br>
+        <label>
+            <input type="checkbox" name="flavour" value="pistachio"> Pistachio
+        </label><br>
+        <label>
+            <input type="checkbox" name="flavour" value="chocolate"> Chocolate
+        </label><br>
+        <label>
+            <input type="checkbox" name="flavour" value="mango"> Mango
+        </label><br>
+        <label>
+            <input type="checkbox" name="flavour" value="santra_mantra"> Santra Mantra
+        </label><br>
+
+        <h3>How would you like to have it?</h3>
+        <label>
+            <input type="radio" name="serve_style" value="cup"> CUP
+        </label><br>
+        <label>
+            <input type="radio" name="serve_style" value="cone"> CONE
+        </label><br>
+        <label>
+            <input type="radio" name="serve_style" value="bar"> BAR
+        </label><br>
+
+        <h3>How Many people would you like to serve?</h3>
+        <input type="number" name="people_to_serve" min="1"><br><br>
+
+        <h3>Tell Us something about yourself</h3>
+        <textarea rows="4" cols="50" name="self_description"></textarea><br><br>
+
+        <button type="reset">To clear the contents click</button><br><br>
+    </form>
+</body>
+</html>
+
+
+Q.2 Write a Python program to create a Pie plot to get the frequency of
+the three species of the Iris data. ?
+
+ans-
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+iris = sns.load_dataset('iris')
+species_counts = iris['species'].value_counts()
+plt.figure(figsize=(8, 6))
+plt.pie(species_counts, labels=species_counts.index,
+autopct='%1.1f%%', startangle=140)
+plt.title('Frequency of Iris Species')
+plt.axis('equal')
+plt.show()
+
+- - - Slip 23 - - -
+
+Q.1 Write a PHP script for the following: Design a form to accept a
+ string.
+ a. Pad the given string with “*” from left and right both the sides.
+ b. Remove the leading whitespaces from the given string.
+ f. Find the reverse of given string.(Use built-in functions). ?
+
+ans- 
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+</head>
+<body>
+    <form method="post">
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString" name="inputString" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $inputString = $_POST['inputString'];
+        $paddedString = "*" . trim($inputString) . "*";
+        $reversedString = strrev(trim($inputString));
+
+        echo "<h3>Results:</h3>";
+        echo "Padded String: $paddedString<br>";
+        echo "Reversed String: $reversedString<br>";
+    }
+    ?>
+</body>
+</html>
+
+
+Q.2 Generate a random array of 50 integers and display them using a
+line chart, scatter plot, histogram and box plot. Apply appropriate color,
+labels and styling options. ?
+
+ans-
+
+#scatter
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+y=np.random.randn(50)
+plt.scatter(x,y,c='r',linestyle='--')
+plt.show()
+#histogram
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+plt.hist(x,facecolor='y',bins=10)
+plt.show()
+#box plot
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.random.randn(50)
+plt.boxplot(x,vert=False)
+plt.show()
+
+
+- - - Slip 24 - - -
+
+Q.1 Write a PHP script for the following: Design a form to accept two
+ strings from the user.
+a. Find whether the small string appears at the start of the large
+string.
+ b. Find the position of the small string in the big string.
+ c. Compare both the string for first n characters, also the comparison
+ should not be case sensitive. ?
+
+ans-
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+</head>
+<body>
+    <form method="post">
+        <label for="largeString">Enter the large string:</label>
+        <input type="text" id="largeString" name="largeString" required><br>
+        <label for="smallString">Enter the small string:</label>
+        <input type="text" id="smallString" name="smallString" required><br>
+        <label for="n">Enter number of characters for comparison:</label>
+        <input type="number" id="n" name="n" required><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $largeString = $_POST['largeString'];
+        $smallString = $_POST['smallString'];
+        $n = intval($_POST['n']);
+
+        $startsWith = strpos($largeString, $smallString) === 0;
+        $position = strpos($largeString, $smallString);
+        $compareResult = strncasecmp($largeString, $smallString, $n) === 0;
+
+        echo "<h3>Results:</h3>";
+        echo $startsWith ? "The small string appears at the start of the large string.<br>" : "The small string does not appear at the start of the large string.<br>";
+        echo $position !== false ? "The position of the small string in the large string is: $position<br>" : "The small string is not found in the large string.<br>";
+        echo $compareResult ? "The first $n characters of both strings are equal (case insensitive).<br>" : "The first $n characters of both strings are not equal (case insensitive).<br>";
+    }
+    ?>
+</body>
+</html>
+
+Q.2 Write a program in python to draw (bar graph, pie chart and scatter
+plot). Apply appropriate color, labels and styling options
+ (Use X={15,20,25,30,35,40},Y={50,40,80,90,49,63}) ?
+
+ans-
+
+#scatter
+import matplotlib.pyplot as plt
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.scatter(x_axis_value, y_axis_value)
+plt.show()
+#bar graph
+import matplotlib.pyplot as plt
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.bar(x_axis_value, y_axis_value)
+plt.show()
+#pie chart
+import matplotlib.pyplot as plt
+import numpy as np
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.pie(x_axis_value, y_axis_value)
+plt.show()
+
+
+- - - Slip 25 - - -
+
+Q.1 Write a PHP script for the following: Design a form to accept the
+ marks of 5 different subjects of a student, having serial number,
+ subject name & marks out of 100. Display the result in the tabular
+ format which will have total, percentage and grade. ?
+
+ans-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <h2>Enter Marks for 5 Subjects</h2>
+        <?php
+        $subjects = ['Subject 1', 'Subject 2', 'Subject 3', 'Subject 4', 'Subject 5'];
+        foreach ($subjects as $index => $subject) {
+            echo "<label for='marks$index'>$subject:</label>";
+            echo "<input type='number' id='marks$index' name='marks[]' min='0' max='100' required><br>";
+        }
+        ?>
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $marks = $_POST['marks'];
+        $total = array_sum($marks);
+        $percentage = ($total / 500) * 100;
+        $grade = '';
+
+        if ($percentage >= 90) {
+            $grade = 'A+';
+        } elseif ($percentage >= 80) {
+            $grade = 'A';
+        } elseif ($percentage >= 70) {
+            $grade = 'B';
+        } elseif ($percentage >= 60) {
+            $grade = 'C';
+        } elseif ($percentage >= 50) {
+            $grade = 'D';
+        } else {
+            $grade = 'F';
+        }
+
+        echo "<h3>Result:</h3>";
+        echo "<table>";
+        echo "<tr><th>Serial No</th><th>Marks</th></tr>";
+        foreach ($marks as $index => $mark) {
+            echo "<tr><td>" . ($index + 1) . "</td><td
+
+Q.2 Write a program in python to drow (bar graph, pie chart and scatter
+plot). Apply appropriate color, labels and styling options
+ (Use X={10,20,30,40,50,60},Y={50,40,80,90,49,63}) ?
+
+ans-
+
+#scatter
+import matplotlib.pyplot as plt
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.scatter(x_axis_value, y_axis_value)
+plt.show()
+#bar graph
+import matplotlib.pyplot as plt
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.bar(x_axis_value, y_axis_value)
+plt.show()
+#pie chart
+import matplotlib.pyplot as plt
+import numpy as np
+x_axis_value =[10,20,30,40,50,60]
+y_axis_value =[50,40,80,90,49,63]
+plt.pie(x_axis_value, y_axis_value)
+plt.show()
+
+
+- - - Slip 26 - - -
+
+Q.1 Write HTML 5 code which generates the following output and
+ display each element of list in different size, color& font. Use
+external CSS to format the list ?
+
+ans-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plants</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2 {
+            color: #2a9d8f;
+        }
+
+        .non-flowering li.fern {
+            font-size: 20px;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .non-flowering li.spore {
+            font-size: 18px;
+            color: brown;
+            font-family: 'Georgia', serif;
+        }
+
+        .flowering li.lilly {
+            font-size: 22px;
+            color: purple;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .flowering li.rose {
+            font-size: 24px;
+            color: red;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        .rose-types li.red-rose {
+            font-size: 18px;
+            color: crimson;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .rose-types li.pink-rose {
+            font-size: 18px;
+            color: pink;
+            font-family: 'Arial Black', Gadget, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Types of Plants</h1>
+
+    <h2>Non Flowering Plants</h2>
+    <ul class="non-flowering">
+        <li class="fern">Fern</li>
+        <li class="spore">Spore</li>
+    </ul>
+
+    <h2>Flowering Plants</h2>
+    <ul class="flowering">
+        <li class="lilly">Lilly</li>
+        <li class="rose">Rose
+            <ol class="rose-types">
+                <li class="red-rose">Red Rose</li>
+                <li class="pink-rose">Pink Rose</li>
+            </ol>
+        </li>
+    </ul>
+</body>
+</html>
+
+
+Q.2 Write a program in python to perform following task 1. Import
+Dataset and do the followings: a) Describing the dataset b) Shape of the
+dataset c) Display first 3 rows from dataset 2. Handling Missing Value:
+a) Replace missing by 0 (use lst =[{'a': 1, 'b': 2, 'c': 3, 'd': 4}, … {'a': 10,
+'b': 20, 'c': 30, 'd': 40}, … {'a': 100, 'b': 200, 'c': 300, 'd': 400 }] ?
+
+ans-
+
+import pandas as pd
+lst = [{'a': 1, 'b': 2, 'c': 3, 'd': 4},
+ {'a': 10, 'b': 20, 'c': 30, 'd': 40},
+ {'a': 100, 'b': 200, 'c': 300, 'd': 400}]
+df = pd.DataFrame(lst)
+print("Describing the dataset:")
+print(df.describe())
+print("\nShape of the dataset:")
+print(df.shape)
+print("\nFirst 3 rows of the dataset:")
+print(df.head(3))
+df.fillna(0, inplace=True)
+print("\nDataset after replacing missing values with 0:")
+print(df)
+
+
+- - - Slip 27 - - -
+
+Q.1 Write a HTML script to design the following screen?
+
+ans-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .info-text {
+            flex: 2;
+            font-size: 18px;
+        }
+
+        .box {
+            flex: 1;
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        This is a header.
+    </div>
+
+    <div class="container">
+        <div class="info-text">
+            Look in the box at the right for some information
+        </div>
+        <div class="box">
+            Here is some information<br>
+            26<br>
+            27
+        </div>
+    </div>
+
+    <div class="footer">
+        This is a footer.
+    </div>
+
+</body>
+</html>
+
+Q.2 Write a program in python to perform following task
+ Import Dataset and do the followings: a) Describing the dataset b)
+Shape of the dataset c) Display first 3 rows from dataset and find
+missing value (use Data.csv) ?
+
+ans-
+
+import pandas as pd
+
+df = pd.read_csv('Data.csv')
+description = df.describe()
+shape = df.shape
+first_3_rows = df.head(3)
+missing_values = df.isnull().sum()
+
+print("Description of dataset:\n", description)
+print("Shape of dataset:", shape)
+print("First 3 rows:\n", first_3_rows)
+print("Missing values:\n", missing_values)
+
+
+
+- - - Slip 28 - - -
+
+Q.1 Create an html page with following specifications
+ a. Title should be about My College
+ b. Put the windows Logo image in the background
+ c. Place your college name at the top of the page in large text
+ followed by address in smaller size
+d. Add names of courses offered each in a different colour, style
+and typeface
+ e. Add scrolling text with a message of your choice. ?
+
+ans - 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My College</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6e/Windows_logo_-_2021.svg');
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 24px;
+        }
+        .courses {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .course {
+            display: inline-block;
+            margin: 10px;
+            font-size: 20px;
+        }
+        .course1 { color: red; font-style: italic; }
+        .course2 { color: blue; font-weight: bold; }
+        .course3 { color: green; }
+        .course4 { color: orange; text-decoration: underline; }
+        .course5 { color: purple; font-size: 22px; }
+        .marquee {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My College</h1>
+    <h2>123 College Avenue, City, State, ZIP</h2>
+
+    <div class="courses">
+        <div class="course course1">Computer Science</div>
+        <div class="course course2">Electrical Engineering</div>
+        <div class="course course3">Mechanical Engineering</div>
+        <div class="course course4">Civil Engineering</div>
+        <div class="course course5">Business Administration</div>
+    </div>
+
+    <div class="marquee">
+        <marquee>Welcome to My College! Explore your future with us!</marquee>
+    </div>
+</body>
+</html>
+
+Q.2 View the dataframe, print the shape, number of rows-columns, data
+types, feature names and the description of the data and basic statistical
+details of the data.(Use Heights and Weights Dataset.csv) ?
+
+ans-
+
+import pandas as pd
+
+df = pd.read_csv('Heights and Weights Dataset.csv')
+shape = df.shape
+rows, columns = df.shape
+data_types = df.dtypes
+feature_names = df.columns
+description = df.describe()
+
+print("Shape of dataset:", shape)
+print("Number of rows:", rows)
+print("Number of columns:", columns)
+print("Data types:\n", data_types)
+print("Feature names:\n", feature_names)
+print("Description of dataset:\n", description)
+
+
+- - - Slip 29 - - -
+
+Q.1 Write the HTML code for generating the form as shown below ?
+
+ans- 
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OS Survey</title>
+</head>
+<body>
+    <h2>OS Survey</h2>
+    <form>
+        <label>Name:</label><br>
+        <input type="text" name="name"><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password"><br>
+
+        <label>OS Used:</label><br>
+        <input type="checkbox" name="os_used" value="LINUX" checked>LINUX<br>
+        <input type="checkbox" name="os_used" value="Windows XP">Windows XP<br>
+        <input type="checkbox" name="os_used" value="Macintosh 8.0">Macintosh 8.0<br>
+
+        <label>Favorite OS:</label><br>
+        <input type="radio" name="os_best" value="LINUX">LINUX<br>
+        <input type="radio" name="os_best" value="Windows XP" checked>Windows XP<br>
+        <input type="radio" name="os_best" value="Macintosh 8.0">Macintosh 8.0<br>
+
+        <p>Form Completed.</p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+Q.2 View the dataframe, print the shape, number of rows-columns,
+data types, feature names and the description of the data and basic
+statistical details of the data.(Use iris.csv) ?
+
+ans-
+
+import pandas as pd
+
+df = pd.read_csv('iris.csv')
+shape = df.shape
+rows, columns = df.shape
+data_types = df.dtypes
+feature_names = df.columns
+description = df.describe()
+
+print("Shape of dataset:", shape)
+print("Number of rows:", rows)
+print("Number of columns:", columns)
+print("Data types:\n", data_types)
+print("Feature names:\n", feature_names)
+print("Description of dataset:\n", description)
+
+
